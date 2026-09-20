@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Kumar Maurya | Mechanical & Automotive Engineer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
+          },
+          colors: {
+            brand: {
+              cyan: '#06b6d4',
+              blue: '#3b82f6',
+              dark: '#0a0f1d',
+              card: '#111827',
+              border: '#1f293d',
+              accent: '#38bdf8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom blueprint engineering grid pattern */
+    .bg-grid-pattern {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.35);
+    }
+    .text-glow {
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    }
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0f1d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0284c7;
+    }
+  </style>
+</head>
+
+<body class="bg-[#080d1a] text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-[#080d1a]/85 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center space-x-2 group">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-mono font-bold text-white shadow-lg group-hover:scale-105 transition-transform">
+            AKM
+          </div>
+          <span class="font-mono text-lg font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+            Aditya<span class="text-cyan-400">.Eng</span>
+          </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-7 font-mono text-sm tracking-wide text-slate-300">
+          <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+          <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+          <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+          <a href="#calculator" class="hover:text-cyan-400 transition-colors">Demo Lab</a>
+          <a href="#experience" class="hover:text-cyan-400 transition-colors">Timeline</a>
+          <a href="#contact" class="px-4 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-900 transition-all font-semibold">
+            Contact
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" aria-label="Toggle menu" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0a1122] border-b border-slate-800 px-5 pt-3 pb-6 space-y-3 font-mono text-sm">
+      <a href="#about" class="block py-2 text-slate-300 hover:text-cyan-400 mobile-nav-link">About</a>
+      <a href="#skills" class="block py-2 text-slate-300 hover:text-cyan-400 mobile-nav-link">Skills</a>
+      <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400 mobile-nav-link">Projects</a>
+      <a href="#calculator" class="block py-2 text-slate-300 hover:text-cyan-400 mobile-nav-link">Demo Lab</a>
+      <a href="#experience" class="block py-2 text-slate-300 hover:text-cyan-400 mobile-nav-link">Timeline</a>
+      <a href="#contact" class="block py-2 text-cyan-400 font-semibold mobile-nav-link">Get in Touch</a>
+    </div>
+  </nav>
+
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-grid-pattern">
+    <!-- Interactive Background Canvas for Kinetic Particle Grid -->
+    <canvas id="particleCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-40"></canvas>
+
+    <!-- Glowing backdrop gradient spheres -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/15 rounded-full blur-[110px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/10 rounded-full blur-[90px] pointer-events-none"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-10 py-16">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6 uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>DTU Undergraduate • In Progress (Active 2026)</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-mono font-bold tracking-tight text-white mb-6">
+        Aditya Kumar <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Maurya</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+        Undergraduate Mechanical & Automotive Engineer at <span class="text-cyan-300 font-medium">Delhi Technological University (DTU)</span>.
+        Passionate about <span class="text-slate-100 font-normal">Vehicle Dynamics</span>, <span class="text-slate-100 font-normal">Electric Powertrains</span>, and <span class="text-slate-100 font-normal">FEA & Thermal Systems</span>.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-sm font-mono">
+        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:brightness-110 hover:shadow-lg hover:shadow-cyan-500/25 transition-all flex items-center space-x-2">
+          <span>Explore Projects</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <button onclick="triggerResumeDownload()" class="px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-cyan-500/50 transition-all flex items-center space-x-2 group">
+          <i data-lucide="file-text" class="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+          <span>Download Resume</span>
+        </button>
+
+        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-transparent hover:bg-slate-900 text-slate-300 border border-transparent hover:border-slate-700 transition-all flex items-center space-x-2">
+          <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+          <span>Contact Me</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-slate-800/80 text-left">
+        <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60">
+          <div class="font-mono text-2xl font-bold text-cyan-400">DTU</div>
+          <div class="text-xs text-slate-400">Premier Tech Institute</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60">
+          <div class="font-mono text-2xl font-bold text-blue-400">CAD / FEA</div>
+          <div class="text-xs text-slate-400">SolidWorks & ANSYS</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60">
+          <div class="font-mono text-2xl font-bold text-emerald-400">FSAE / EV</div>
+          <div class="text-xs text-slate-400">Vehicle Dynamics</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60">
+          <div class="font-mono text-2xl font-bold text-amber-400">Python/MATLAB</div>
+          <div class="text-xs text-slate-400">Engineering Simulation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-24 relative z-10 border-t border-slate-800/60 bg-[#0a0f21]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <!-- Visual CAD blueprint representation -->
+        <div class="w-full md:w-5/12 flex justify-center">
+          <div class="relative group">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+            <div class="relative bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl overflow-hidden">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs font-mono text-slate-400">
+                <span>SPEC SHEET // AKM-2026</span>
+                <span class="text-cyan-400">ONLINE</span>
+              </div>
+              <div class="aspect-square w-64 max-w-full mx-auto rounded-xl bg-gradient-to-b from-slate-800/60 to-slate-950 flex flex-col items-center justify-center p-6 text-center border border-slate-800 relative">
+                <div class="w-24 h-24 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-4 text-cyan-400">
+                  <i data-lucide="cpu" class="w-12 h-12 stroke-[1.5]"></i>
+                </div>
+                <h4 class="font-mono text-white font-semibold text-base">Aditya Kumar Maurya</h4>
+                <p class="text-xs text-cyan-400 font-mono mt-1">Delhi Technological University</p>
+                <div class="mt-4 flex gap-2">
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">B.Tech</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">Automotive</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800/70 text-xs font-mono text-slate-400 space-y-1">
+                <div class="flex justify-between"><span>Status:</span> <span class="text-cyan-300">Undergrad (Graduation 2026-27)</span></div>
+                <div class="flex justify-between"><span>Focus:</span> <span class="text-slate-200">Powertrain & Aerodynamics</span></div>
+                <div class="flex justify-between"><span>Location:</span> <span class="text-slate-200">Delhi, India</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio text -->
+        <div class="w-full md:w-7/12">
+          <div class="flex items-center space-x-2 text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2">
+            <i data-lucide="compass" class="w-4 h-4"></i>
+            <span>Engineering Perspective</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-mono font-bold text-white mb-6">
+            Blending Analytical Rigor with Automotive Innovation
+          </h2>
+          <p class="text-slate-300 leading-relaxed mb-4 text-base">
+            Currently pursuing my degree in <strong class="text-white">Mechanical & Automotive Engineering</strong> (2026) at <strong class="text-white">Delhi Technological University (DTU, formerly DCE)</strong>. My technical journey lies at the intersection of vehicle dynamics, powertrain engineering, and high-fidelity thermal simulation.
+          </p>
+          <p class="text-slate-400 leading-relaxed mb-6 text-sm">
+            Whether designing CAD components in SolidWorks, calculating cornering stiffness for Formula Student prototypes, or building Python scripts for parametric fluid/thermal analysis, I focus on building robust engineering solutions that optimize mass, efficiency, and reliability.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 font-mono text-xs">
+            <div class="flex items-center space-x-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+              <span>Finite Element Analysis (FEA)</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+              <span>CFD Aerodynamic Packaging</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+              <span>EV Battery Thermal Management</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+              <span>Formula Student Dynamics</span>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <a href="#calculator" class="inline-flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 font-mono text-sm font-semibold underline underline-offset-4">
+              <span>Test my live Vehicle Dynamics Calculator</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-24 relative z-10 bg-[#080d1a] border-t border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-2">Technical Matrix</div>
+        <h2 class="text-3xl sm:text-4xl font-mono font-bold text-white">Skills & Toolchain</h2>
+        <p class="text-slate-400 mt-2 text-sm">Engineered tools, simulation suites, and computational languages I work with.</p>
+      </div>
+
+      <!-- Skill Categories Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- CAD & Simulation -->
+        <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5 group-hover:scale-105 transition-transform">
+            <i data-lucide="box" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-mono text-lg font-bold text-white mb-3">CAD & FEA Simulation</h3>
+          <p class="text-xs text-slate-400 mb-4">Precision modeling, structural stress distribution, and aerodynamic evaluation.</p>
+          <div class="space-y-3 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>SolidWorks (3D CAD & Mating)</span>
+                <span class="text-cyan-400">90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-cyan-500 h-full rounded-full w-[90%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>ANSYS Mechanical & FEA</span>
+                <span class="text-cyan-400">82%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-cyan-500 h-full rounded-full w-[82%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>AutoCAD 2D Drafting</span>
+                <span class="text-cyan-400">88%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-cyan-500 h-full rounded-full w-[88%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>ANSYS Fluent (CFD Basics)</span>
+                <span class="text-cyan-400">75%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-cyan-500 h-full rounded-full w-[75%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Engineering Competencies -->
+        <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-blue-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-105 transition-transform">
+            <i data-lucide="gauge" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-mono text-lg font-bold text-white mb-3">Core Mechanics</h3>
+          <p class="text-xs text-slate-400 mb-4">Physics-driven thermodynamics, fluid dynamics, and suspension mechanics.</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">Vehicle Dynamics</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">Thermodynamics</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">Heat Transfer</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">Fluid Mechanics</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">Kinematic Linkages</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">EV Powertrains</span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-mono text-slate-300">Braking Systems</span>
+          </div>
+        </div>
+
+        <!-- Computational Tools & Programming -->
+        <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-emerald-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-105 transition-transform">
+            <i data-lucide="terminal" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-mono text-lg font-bold text-white mb-3">Computation & Code</h3>
+          <p class="text-xs text-slate-400 mb-4">Algorithm design, numerical simulation, and mathematical optimization.</p>
+          <div class="space-y-3 font-mono text-xs">
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>MATLAB & Simulink</span>
+                <span class="text-emerald-400">85%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-500 h-full rounded-full w-[85%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>Python (NumPy, SciPy, Matplotlib)</span>
+                <span class="text-emerald-400">88%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-500 h-full rounded-full w-[88%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>C++ / Numerical Solvers</span>
+                <span class="text-emerald-400">76%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-500 h-full rounded-full w-[76%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-300">
+                <span>Git & Web Tools (HTML/JS)</span>
+                <span class="text-emerald-400">80%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-500 h-full rounded-full w-[80%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-24 relative z-10 bg-[#0a0f21] border-t border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <div class="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-2">Technical Portfolio</div>
+          <h2 class="text-3xl sm:text-4xl font-mono font-bold text-white">Featured Engineering Projects</h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md mt-3 md:mt-0 font-sans">
+          Rigorous simulations, component prototyping, and analytical modeling conducted at DTU.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Project 1: Electric Vehicle Dynamics -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all flex flex-col group">
+          <div class="h-48 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950/40 p-6 flex flex-col justify-between border-b border-slate-800 relative overflow-hidden">
+            <div class="flex justify-between items-start z-10">
+              <span class="px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+                MATLAB / Simulink
+              </span>
+              <span class="text-slate-400 font-mono text-xs">#DTU-EV-01</span>
+            </div>
+            <div class="z-10">
+              <h3 class="font-mono text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                EV Dynamics & Electronic Torque Vectoring
+              </h3>
+            </div>
+            <!-- Background Wireframe Decorative Motif -->
+            <div class="absolute -right-6 -bottom-6 w-36 h-36 border border-cyan-500/20 rounded-full flex items-center justify-center">
+              <div class="w-24 h-24 border border-cyan-500/20 rounded-full"></div>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Developed a 7-DOF vehicle dynamics simulation model to calculate optimal wheel torque distribution during dynamic cornering, reducing understeer gradient by 14% on high-speed track sectors.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs text-slate-400">
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Bicycle Model</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Yaw Rate Control</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Pacejka '02 Magic Formula</span>
+            </div>
+            <button onclick="openModal('ev-project')" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-200 border border-slate-700 hover:border-cyan-500/40 font-mono text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+              <span>View Technical Specification</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: Formula Student Aero & Impact Attenuator -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all flex flex-col group">
+          <div class="h-48 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/40 p-6 flex flex-col justify-between border-b border-slate-800 relative overflow-hidden">
+            <div class="flex justify-between items-start z-10">
+              <span class="px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-mono">
+                ANSYS Mechanical / SolidWorks
+              </span>
+              <span class="text-slate-400 font-mono text-xs">#FSAE-SUB-02</span>
+            </div>
+            <div class="z-10">
+              <h3 class="font-mono text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                Crash Impact Attenuator & Subsystem FEA
+              </h3>
+            </div>
+            <!-- Structural Lattice Motif -->
+            <div class="absolute -right-4 -bottom-4 w-32 h-32 opacity-20 text-blue-400 flex items-center justify-center">
+              <i data-lucide="shield" class="w-28 h-28"></i>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Engineered and analyzed an aluminum honeycomb impact attenuator adhering to Formula Student safety mandates. Simulating non-linear explicit dynamics to maintain deceleration below 20g.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs text-slate-400">
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Nonlinear Buckling</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Energy Absorption</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Safety Factor 1.6</span>
+            </div>
+            <button onclick="openModal('fsae-project')" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-blue-500/20 hover:text-blue-300 text-slate-200 border border-slate-700 hover:border-blue-500/40 font-mono text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+              <span>View Technical Specification</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: Battery Pack Thermal Management -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all flex flex-col group">
+          <div class="h-48 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950/40 p-6 flex flex-col justify-between border-b border-slate-800 relative overflow-hidden">
+            <div class="flex justify-between items-start z-10">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
+                Thermal / CFD Simulation
+              </span>
+              <span class="text-slate-400 font-mono text-xs">#THRM-BMS-03</span>
+            </div>
+            <div class="z-10">
+              <h3 class="font-mono text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                Li-ion Battery Pack Thermal Management (BTMS)
+              </h3>
+            </div>
+            <!-- Battery Thermal Motif -->
+            <div class="absolute -right-4 -bottom-4 w-32 h-32 opacity-20 text-emerald-400 flex items-center justify-center">
+              <i data-lucide="zap" class="w-28 h-28"></i>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Constructed a computational conjugate heat transfer model for a 400V pouch cell pack. Optimized cooling channels with mini-channel cold plates, maintaining maximum temperature differential under 3.5°C at 3C discharge rate.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs text-slate-400">
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Conjugate Heat Transfer</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Pressure Drop Optimization</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Glycol-Water Coolant</span>
+            </div>
+            <button onclick="openModal('btms-project')" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-emerald-500/20 hover:text-emerald-300 text-slate-200 border border-slate-700 hover:border-emerald-500/40 font-mono text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+              <span>View Technical Specification</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4: Double Wishbone Suspension Kinematics -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all flex flex-col group">
+          <div class="h-48 bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950/40 p-6 flex flex-col justify-between border-b border-slate-800 relative overflow-hidden">
+            <div class="flex justify-between items-start z-10">
+              <span class="px-2.5 py-1 rounded-md bg-amber-950/80 border border-amber-500/30 text-amber-300 text-xs font-mono">
+                SolidWorks Kinematics & Python
+              </span>
+              <span class="text-slate-400 font-mono text-xs">#SUSP-KIN-04</span>
+            </div>
+            <div class="z-10">
+              <h3 class="font-mono text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                Double Wishbone Suspension Geometry Optimization
+              </h3>
+            </div>
+            <div class="absolute -right-4 -bottom-4 w-32 h-32 opacity-20 text-amber-400 flex items-center justify-center">
+              <i data-lucide="settings" class="w-28 h-28"></i>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Parametric kinematic synthesis for roll center migration and camber gain curves. Formulated custom Python multi-variable optimization to restrict roll center shift to within ±12 mm under 2.5g cornering bump.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs text-slate-400">
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Camber Gain Curves</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Anti-Dive & Anti-Squat</span>
+              <span class="bg-slate-800/80 px-2 py-1 rounded">Roll Center Height</span>
+            </div>
+            <button onclick="openModal('suspension-project')" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-amber-500/20 hover:text-amber-300 text-slate-200 border border-slate-700 hover:border-amber-500/40 font-mono text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+              <span>View Technical Specification</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="py-24 relative z-10 bg-[#080d1a] border-t border-slate-800/60">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-2">Interactive Simulation Lab</div>
+        <h2 class="text-3xl sm:text-4xl font-mono font-bold text-white">Vehicle Dynamics & Braking Calculator</h2>
+        <p class="text-slate-400 mt-2 text-sm">
+          Run live mechanical calculations for vehicle kinetic energy, theoretical braking distance, and average deceleration force.
+        </p>
+      </div>
+
+      <!-- Calculator Card -->
+      <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 sm:p-8 backdrop-blur shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Inputs Column -->
+          <div class="lg:col-span-6 space-y-5">
+            <div class="flex items-center space-x-2 text-white font-mono font-semibold text-sm border-b border-slate-800 pb-3">
+              <i data-lucide="sliders" class="w-4 h-4 text-cyan-400"></i>
+              <span>Simulation Parameters</span>
+            </div>
+
+            <!-- Vehicle Speed -->
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-2">
+                <label class="text-slate-300">Initial Velocity (v₀):</label>
+                <span id="speedVal" class="text-cyan-400 font-bold">100 km/h</span>
+              </div>
+              <input type="range" id="speedInput" min="20" max="220" step="5" value="100" 
+                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            </div>
+
+            <!-- Vehicle Mass -->
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-2">
+                <label class="text-slate-300">Vehicle Total Mass (m):</label>
+                <span id="massVal" class="text-cyan-400 font-bold">850 kg (Formula/Track Spec)</span>
+              </div>
+              <input type="range" id="massInput" min="250" max="2500" step="25" value="850" 
+                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            </div>
+
+            <!-- Tire Friction Coefficient (Mu) -->
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-2">
+                <label class="text-slate-300">Tire-Road Friction Coeff (μ):</label>
+                <span id="frictionVal" class="text-cyan-400 font-bold">1.05 (Racing Slicks / Dry)</span>
+              </div>
+              <input type="range" id="frictionInput" min="0.3" max="1.6" step="0.05" value="1.05" 
+                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            </div>
+
+            <!-- Driver Reaction Time -->
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-2">
+                <label class="text-slate-300">Driver Perception Reaction (t_r):</label>
+                <span id="reactionVal" class="text-cyan-400 font-bold">0.40 s</span>
+              </div>
+              <input type="range" id="reactionInput" min="0.1" max="1.5" step="0.05" value="0.4" 
+                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            </div>
+
+            <div class="pt-2">
+              <span class="text-[11px] font-mono text-slate-500 block leading-tight">
+                *Governing equations: d_skid = v² / (2 · μ · g) & E_k = 0.5 · m · v²
+              </span>
+            </div>
+          </div>
+
+          <!-- Outputs Column -->
+          <div class="lg:col-span-6 bg-slate-950/60 rounded-2xl p-6 border border-slate-800/80 flex flex-col justify-between">
+            <div class="flex items-center space-x-2 text-white font-mono font-semibold text-sm border-b border-slate-800 pb-3">
+              <i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-400"></i>
+              <span>Computed Vehicle Telemetry</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 my-6">
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-slate-400 text-xs font-mono block">Kinetic Energy (E_k)</span>
+                <span id="resEnergy" class="text-2xl font-mono font-bold text-cyan-400">327.9 kJ</span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-slate-400 text-xs font-mono block">Deceleration (g-force)</span>
+                <span id="resDecel" class="text-2xl font-mono font-bold text-emerald-400">1.05 g</span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-slate-400 text-xs font-mono block">Reaction Distance</span>
+                <span id="resReactionDist" class="text-2xl font-mono font-bold text-amber-400">11.1 m</span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span class="text-slate-400 text-xs font-mono block">Braking Distance</span>
+                <span id="resBrakeDist" class="text-2xl font-mono font-bold text-blue-400">37.4 m</span>
+              </div>
+            </div>
+
+            <!-- Total Stopping Distance Highlight -->
+            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-blue-950/40 border border-cyan-500/30">
+              <div class="flex justify-between items-center">
+                <div>
+                  <span class="text-xs font-mono text-cyan-300 uppercase tracking-wide">Total Stopping Distance</span>
+                  <div class="text-3xl font-mono font-bold text-white mt-1" id="resTotalDist">48.5 meters</div>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-mono text-lg font-bold">
+                  Σd
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-24 relative z-10 bg-[#0a0f21] border-t border-slate-800/60">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-2">Milestones & History</div>
+        <h2 class="text-3xl sm:text-4xl font-mono font-bold text-white">Academic & Practical Journey</h2>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="relative border-l-2 border-slate-800 ml-4 sm:ml-8 space-y-10">
+        
+        <!-- Milestone 1 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 ring-4 ring-slate-900 group-hover:scale-125 transition-transform"></div>
+          <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 group-hover:border-cyan-500/40 transition-all">
+            <span class="text-xs font-mono text-cyan-400 block mb-1">2023 — Present (Active 2026)</span>
+            <h3 class="text-lg font-mono font-bold text-white">B.Tech in Mechanical & Automotive Engineering (Graduation in Progress)</h3>
+            <div class="text-sm font-medium text-slate-300 mb-2">Delhi Technological University (formerly DCE), Delhi</div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Currently completing degree coursework in 2026, focusing on Vehicle Dynamics, Powertrain Design, CAD/CAM, and Finite Element Analysis (FEA). Actively engaging in collegiate vehicle engineering and applied simulation research.
+            </p>
+          </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-400 ring-4 ring-slate-900 group-hover:scale-125 transition-transform"></div>
+          <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 group-hover:border-blue-500/40 transition-all">
+            <span class="text-xs font-mono text-blue-400 block mb-1">Formula Student & Collegiate Engineering</span>
+            <h3 class="text-lg font-mono font-bold text-white">Automotive Subsystem & Kinematics Contributor</h3>
+            <div class="text-sm font-medium text-slate-300 mb-2">DTU Campus Racing & Prototyping Projects</div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Analyzed suspension hardpoints, packaging clearances for electric motor drives, and chassis structural integrity through parametric SolidWorks CAD and ANSYS stress reports.
+            </p>
+          </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="relative pl-6 sm:pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-400 ring-4 ring-slate-900 group-hover:scale-125 transition-transform"></div>
+          <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-800 group-hover:border-emerald-500/40 transition-all">
+            <span class="text-xs font-mono text-emerald-400 block mb-1">Industrial & Computational Workshops</span>
+            <h3 class="text-lg font-mono font-bold text-white">Applied Simulation & Numerical Modeling Intensive</h3>
+            <div class="text-sm font-medium text-slate-300 mb-2">Technical Certifications & Hands-on Labs</div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Mastered numerical solver techniques in MATLAB/Simulink and Python for multi-body mechanical systems, heat transfer loops, and vehicle lap-time prediction.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 relative z-10 bg-[#080d1a] border-t border-slate-800/60">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <!-- Contact Details -->
+        <div>
+          <div class="text-cyan-400 font-mono text-sm uppercase tracking-wider mb-2">Reach Out</div>
+          <h2 class="text-3xl sm:text-4xl font-mono font-bold text-white mb-6">Let's Connect & Collaborate</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-8">
+            I am always excited to discuss automotive research, formula racing designs, simulation techniques, and engineering internship opportunities. Feel free to connect or drop a message!
+          </p>
+
+          <div class="space-y-4 font-mono text-sm">
+            <div class="flex items-center space-x-3 text-slate-300">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 block">Institution & City</span>
+                <span>DTU, Delhi, India</span>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3 text-slate-300">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 block">Direct Email</span>
+                <a href="mailto:adityamaurya81431@gmail.com" class="text-slate-200 hover:text-cyan-400 transition-colors">adityamaurya81431@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3 text-slate-300">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 block">Phone Number</span>
+                <a href="tel:+919336494196" class="text-slate-200 hover:text-cyan-400 transition-colors">+91 9336494196</a>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-3 text-slate-300">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 block">LinkedIn Profile</span>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">
+                  linkedin.com/in/adityakmaurya
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download Resume Button -->
+          <div class="mt-8 pt-6 border-t border-slate-800">
+            <button onclick="triggerResumeDownload()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-cyan-400 transition-all font-mono text-xs font-semibold flex items-center justify-center space-x-2">
+              <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i>
+              <span>Download Official Resume (PDF)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-slate-900/60 border border-slate-800 p-6 sm:p-8 rounded-2xl">
+          <form id="contactForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+              <input type="text" id="formName" required placeholder="Dr. John Doe / Recruiter" 
+                     class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Your Email</label>
+              <input type="email" id="formEmail" required placeholder="john@company.com" 
+                     class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Subject / Project Domain</label>
+              <input type="text" id="formSubject" required placeholder="Vehicle Dynamics Internship / Research" 
+                     class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+              <textarea id="formMessage" rows="4" required placeholder="Share your inquiry or project scope..." 
+                        class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono font-bold text-sm hover:brightness-110 transition-all flex items-center justify-center space-x-2">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Transmit Message</span>
+            </button>
+          </form>
+
+          <!-- Notification Toast Alert inside card -->
+          <div id="formToast" class="hidden mt-4 p-3 rounded-lg bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono flex items-center space-x-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+            <span>Message simulated successfully! I will get back to you shortly.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 bg-[#050811] border-t border-slate-800/80 text-xs font-mono text-slate-500 text-center">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span class="text-slate-400">Aditya Kumar Maurya • DTU Mechanical & Automotive</span>
+      </div>
+      <div>
+        <span>Engineered with HTML5, Tailwind CSS & JavaScript</span>
+      </div>
+      <div>
+        <a href="#hero" class="text-cyan-400 hover:underline">Return to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modalContent" class="space-y-4">
+        <!-- Content will be injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile Navbar toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Particle Background System (Kinetic grid simulation)
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 45;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.radius = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(6, 182, 212, 0.45)';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Connect nearby particles with blueprint lines
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    const speedInput = document.getElementById('speedInput');
+    const massInput = document.getElementById('massInput');
+    const frictionInput = document.getElementById('frictionInput');
+    const reactionInput = document.getElementById('reactionInput');
+
+    const speedVal = document.getElementById('speedVal');
+    const massVal = document.getElementById('massVal');
+    const frictionVal = document.getElementById('frictionVal');
+    const reactionVal = document.getElementById('reactionVal');
+
+    const resEnergy = document.getElementById('resEnergy');
+    const resDecel = document.getElementById('resDecel');
+    const resReactionDist = document.getElementById('resReactionDist');
+    const resBrakeDist = document.getElementById('resBrakeDist');
+    const resTotalDist = document.getElementById('resTotalDist');
+
+    function calculateDynamics() {
+      const v_kmh = parseFloat(speedInput.value);
+      const m = parseFloat(massInput.value);
+      const mu = parseFloat(frictionInput.value);
+      const tr = parseFloat(reactionInput.value);
+
+      // Labels
+      speedVal.innerText = `${v_kmh} km/h`;
+      massVal.innerText = `${m} kg`;
+      frictionVal.innerText = `${mu.toFixed(2)}`;
+      reactionVal.innerText = `${tr.toFixed(2)} s`;
+
+      // Conversion km/h -> m/s
+      const v_ms = v_kmh / 3.6;
+      const g = 9.80665; // m/s^2
+
+      // Kinetic Energy: 0.5 * m * v^2
+      const Ek = (0.5 * m * Math.pow(v_ms, 2)) / 1000; // in kJ
+      // Reaction distance: v * tr
+      const d_react = v_ms * tr;
+      // Braking distance: v^2 / (2 * mu * g)
+      const d_brake = Math.pow(v_ms, 2) / (2 * mu * g);
+      // Total distance
+      const d_total = d_react + d_brake;
+
+      // Outputs
+      resEnergy.innerText = `${Ek.toFixed(1)} kJ`;
+      resDecel.innerText = `${mu.toFixed(2)} g`;
+      resReactionDist.innerText = `${d_react.toFixed(1)} m`;
+      resBrakeDist.innerText = `${d_brake.toFixed(1)} m`;
+      resTotalDist.innerText = `${d_total.toFixed(1)} meters`;
+    }
+
+    [speedInput, massInput, frictionInput, reactionInput].forEach(inp => {
+      inp.addEventListener('input', calculateDynamics);
+    });
+    calculateDynamics(); // initial run
+
+    const projectDetails = {
+      'ev-project': {
+        title: 'EV Dynamics & Electronic Torque Vectoring',
+        badge: 'DTU Dynamics Lab • MATLAB/Simulink',
+        desc: 'Comprehensive multibody vehicle simulation model developed to evaluate stability margins and wheel-slip regulation under transient cornering maneuvers.',
+        specs: [
+          { label: 'Vehicle Architecture', val: 'Rear Dual In-Wheel Electric Motor Powertrain' },
+          { label: 'Control Technique', val: 'PID + Direct Yaw Moment Control (DYC)' },
+          { label: 'Tire Slip Model', val: 'Non-linear Pacejka Magic Formula 2002' },
+          { label: 'Observed Performance', val: '14% decrease in understeer angle during 80 km/h slalom' }
+        ],
+        details: 'The algorithm continuously estimates the side-slip angle (β) and yaw rate (r) using virtual sensor estimators, distributing independent torque to left and right drive wheels to optimize grip threshold and reduce lap wear on track circuits.'
+      },
+      'fsae-project': {
+        title: 'Crash Impact Attenuator & Subsystem FEA',
+        badge: 'Formula Student Safety Mandate • ANSYS',
+        desc: 'Structural engineering and finite element validation of the nose cone energy absorption element complying with FSAE Article T3 regulations.',
+        specs: [
+          { label: 'Material', val: 'Alloy Honeycomb (Al-5052) with Carbon Fiber Skin' },
+          { label: 'Mass Target', val: '1.2 kg total structural mass' },
+          { label: 'Peak Deceleration', val: 'Limited to < 20g (Regulation Compliant)' },
+          { label: 'Energy Dissipation', val: '7350 Joules total kinetic capacity' }
+        ],
+        details: 'Simulated explicit dynamic crushing under 7300 J impact load test with rigid barrier. Verified buckling mode stability to guarantee energy dissipation occurs progressively without structural shearing.'
+      },
+      'btms-project': {
+        title: 'Li-ion Battery Pack Thermal Management (BTMS)',
+        badge: 'Fluid Dynamics & Heat Transfer • ANSYS Fluent',
+        desc: 'Analysis of temperature gradients and thermal runaway containment for high-discharge pouch battery cells used in prototype racecraft.',
+        specs: [
+          { label: 'Cell Chemistry', val: 'NMC 622 Pouch Cells (400V Nominal Pack)' },
+          { label: 'Coolant Medium', val: '50/50 Water-Ethylene Glycol mixture' },
+          { label: 'Temperature Gradient', val: 'Restricted under ΔT < 3.5°C across cells' },
+          { label: 'Pumping Power', val: 'Optimized serpentine manifold with < 18 kPa pressure drop' }
+        ],
+        details: 'Designed aluminium extruded cold-plates with variable-width microchannels to equalize heat transfer coefficients along the flow path, preventing thermal hotspot buildup during aggressive regen and acceleration cycles.'
+      },
+      'suspension-project': {
+        title: 'Double Wishbone Suspension Geometry Optimization',
+        badge: 'Kinematics & Multi-Variable Optimization',
+        desc: 'Mathematical synthesis of unequal length non-parallel double A-arms to balance camber recovery, anti-dive geometry, and track variation.',
+        specs: [
+          { label: 'Front Roll Center', val: '45 mm above ground (controlled migration)' },
+          { label: 'Camber Recovery', val: '0.85° per degree of chassis body roll' },
+          { label: 'Anti-Dive Ratio', val: '28% Front anti-dive kinematics' },
+          { label: 'Steering Layout', val: 'Rack & Pinion with 98% Ackermann compensation' }
+        ],
+        details: 'Formulated a Python geometric solver linking wishbone hardpoints to instantaneous roll centers. Exported coordinate sets into SolidWorks for structural clearance checking with uprights and brake calipers.'
+      }
+    };
+
+    function openModal(id) {
+      const data = projectDetails[id];
+      if (!data) return;
+
+      const modal = document.getElementById('projectModal');
+      const content = document.getElementById('modalContent');
+
+      content.innerHTML = `
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-xs font-mono text-cyan-400 uppercase tracking-wide block mb-1">${data.badge}</span>
+          <h3 class="text-xl font-mono font-bold text-white">${data.title}</h3>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">${data.desc}</p>
+        
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs font-mono">
+          <div class="text-slate-400 font-bold uppercase mb-1">Engineering Specifications</div>
+          ${data.specs.map(s => `
+            <div class="flex flex-col sm:flex-row sm:justify-between py-1 border-b border-slate-900">
+              <span class="text-slate-400">${s.label}:</span>
+              <span class="text-cyan-300 font-semibold">${s.val}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        <p class="text-xs text-slate-400 leading-relaxed">${data.details}</p>
+
+        <div class="pt-4 flex justify-end">
+          <button onclick="closeModal()" class="px-4 py-2 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-mono text-xs font-semibold hover:bg-cyan-500 hover:text-slate-950 transition-colors">
+            Close Specification
+          </button>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const toast = document.getElementById('formToast');
+      
+      btn.disabled = true;
+      btn.innerHTML = `<span class="animate-spin mr-2">⚙</span> Transmitting...`;
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i><span>Transmitted!</span>`;
+        toast.classList.remove('hidden');
+        document.getElementById('contactForm').reset();
+        lucide.createIcons();
+
+        setTimeout(() => {
+          btn.innerHTML = `<i data-lucide="send" class="w-4 h-4"></i><span>Transmit Message</span>`;
+          lucide.createIcons();
+        }, 4000);
+      }, 900);
+    }
+
+    // Resume Download trigger (generates a formatted CV summary for offline review)
+    function triggerResumeDownload() {
+      const resumeContent = `=====================================================
+ADITYA KUMAR MAURYA
+Undergraduate Mechanical & Automotive Engineer (Graduation in Progress - 2026)
+Delhi Technological University (DTU, formerly DCE), Delhi
+Contact: adityamaurya81431@gmail.com | +91 9336494196 | linkedin.com/in/adityakmaurya
+=====================================================
+
+EDUCATION:
+- B.Tech in Mechanical & Automotive Engineering (2023 - 2027)
+  Delhi Technological University (DTU), Delhi
+  Status: Currently in 2026 (Undergraduate Graduation in Progress)
+
+CORE TECHNICAL SKILLS:
+- Computer-Aided Design (CAD): SolidWorks, AutoCAD
+- Finite Element Analysis & CFD: ANSYS Mechanical, ANSYS Fluent
+- Vehicle Dynamics & Powertrain: Torque Vectoring, Braking Systems, Battery Thermal Management (BTMS)
+- Computational Tools & Code: MATLAB, Simulink, Python (NumPy, SciPy, Matplotlib), C++
+
+PROJECT HIGHLIGHTS:
+1. EV Dynamics & Electronic Torque Vectoring (Simulink / MATLAB)
+   - 7-DOF vehicle dynamics model with non-linear Pacejka tire modeling.
+   - Reduced cornering understeer gradient by 14%.
+
+2. Formula Student Crash Impact Attenuator & Subsystem FEA (ANSYS Mechanical)
+   - Structural honeycomb crash evaluation complying with formula safety mandates.
+   - Absorbed 7350 J within peak deceleration limits (<20g).
